@@ -29,7 +29,7 @@ currencies = ['BTCUSDT', 'BNBBUSD', 'ETHBUSD', 'SOLBUSD']
 
 for currency in currencies:
     Dataset(interval='hour', coin=currency)
-    Dataset(interval='minute', coin=currency)
+    #Dataset(interval='minute', coin=currency)
 
 currency_pair_data = {}
 for currency in currencies:
