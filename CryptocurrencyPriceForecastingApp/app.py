@@ -29,14 +29,14 @@ currencies = ['BTCUSDT', 'BNBBUSD', 'ETHBUSD', 'SOLBUSD']
 
 for currency in currencies:
     Dataset(interval='hour', coin=currency)
-    #Dataset(interval='minute', coin=currency)
+    # Dataset(interval='minute', coin=currency)
 
 currency_pair_data = {}
 for currency in currencies:
     currency_pair_data[f'{currency}_hour'] = data_preprocessing(
         'hour', currency).dataset
-    currency_pair_data[f'{currency}_minute'] = data_preprocessing(
-        'minute', currency).dataset
+    # currency_pair_data[f'{currency}_minute'] = data_preprocessing(
+    #     'minute', currency).dataset
 
 
 def get_init_time():
@@ -112,7 +112,7 @@ app.layout = html.Div(
                             className="bottom-dropdown",
                             id="interval_selector",
                             options=[
-                                {"label": "15 minutes", "value": "minute"},
+                                # {"label": "15 minutes", "value": "minute"},
                                 {"label": "1 hour", "value": "hour"}
                             ],
                             value="hour",
@@ -165,24 +165,24 @@ app.layout = html.Div(
 )
 
 
-# @app.callback(
-#     Output('hidden-div', 'children'),
-#     Input('data_interval', 'n_intervals')
-# )
-# def update_data(n):
-#     global currency_pair_data
+@app.callback(
+    Output('hidden-div', 'children'),
+    Input('data_interval', 'n_intervals')
+)
+def update_data(n):
+    global currency_pair_data
 
-#     for currency in currencies:
-#         Dataset(interval='hour', coin=currency)
-#         Dataset(interval='minute', coin=currency)
+    for currency in currencies:
+        Dataset(interval='hour', coin=currency)
+        # Dataset(interval='minute', coin=currency)
 
-#     currency_pair_data = {}
-#     for currency in currencies:
-#         currency_pair_data[f'{currency}_hour'] = data_preprocessing(
-#             'hour', currency).dataset
-#         currency_pair_data[f'{currency}_minute'] = data_preprocessing(
-#             'minute', currency).dataset
-#     return None
+    currency_pair_data = {}
+    for currency in currencies:
+        currency_pair_data[f'{currency}_hour'] = data_preprocessing(
+            'hour', currency).dataset
+        # currency_pair_data[f'{currency}_minute'] = data_preprocessing(
+        #     'minute', currency).dataset
+    return None
 
 
 @app.callback(
